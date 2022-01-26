@@ -39,6 +39,11 @@ func (pr *parService) UpdateParticipant(data participant.ParticipantCore) error 
 		msg := fmt.Sprintf("user with id %v does not have vaccination post with id %v", data.UserID, data.ID)
 		return errors.New(msg)
 	}
+	if parData.Status!="registered"{
+
+		msg := fmt.Sprintf("participant already %v", parData.Status)
+		return errors.New(msg)
+	}
 	err=pr.parRepository.UpdateParticipant(data)
 	if err!=nil{
 		return err
@@ -55,6 +60,13 @@ func (pr *parService) DeleteParticipant(data participant.ParticipantCore) error 
 		msg := fmt.Sprintf("user with id %v does not have vaccination post with id %v", data.UserID, data.ID)
 		return errors.New(msg)
 	}
+	
+	if parData.Status!="registered"{
+
+		msg := fmt.Sprintf("participant already %v", parData.Status)
+		return errors.New(msg)
+	}
+	
 	err=pr.parRepository.DeleteParticipant(data)
 	if err!=nil{
 		return err
