@@ -6,6 +6,7 @@ type VacCore struct {
 	ID       	int
 	Description	string
 	Location	string
+	Address		string
 	Latitude 	float64
 	Longitude 	float64
 	Sessions	[]SessionCore
@@ -30,6 +31,8 @@ type Service interface{
 	UpdateVaccinationPost(data VacCore)error
 	//get nearby facilities
 	GetNearbyFacilities(latitude float64, longitude float64, radius float64)([]VacCore, error)
+	//get vaccination by admin id
+	GetVacByIdAdmin(id int)([]VacCore, error)
 }
 
 type Repository interface{
@@ -40,4 +43,6 @@ type Repository interface{
 	UpdateVacData(data VacCore)error
 	//get nearby facilities
 	GetNearbyFacilities(latitude float64, longitude float64, radius float64)([]VacCore, error)
+	//get vaccination by admin id
+	GetVacByIdAdmin(id int)([]VacCore, error)
 }

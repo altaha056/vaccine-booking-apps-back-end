@@ -35,7 +35,8 @@ func New() *echo.Echo {
 	e.GET("/vac/:id", presenter.VacPresentation.GetVacPostByIdHandler)
 	jwt.DELETE("/vac/:id", presenter.VacPresentation.DeletVacPostHandler)
 	jwt.PUT("/vac", presenter.VacPresentation.UpdateVacPostHandler)
-	e.GET("/near", presenter.VacPresentation.GetNearbyFacilitiesHandler)
+	e.POST("/near", presenter.VacPresentation.GetNearbyFacilitiesHandler)
+	e.GET("/vacbyadmin/:id", presenter.VacPresentation.GetVacByIdAdminHandler)
 
 	// participant
 	jwt.POST("/participant", presenter.ParticipantPresentation.ApplyParticipantHandler)
@@ -45,5 +46,8 @@ func New() *echo.Echo {
 	jwt.PUT("/participant/canceled", presenter.ParticipantPresentation.RejectParticipantHandler)
 	jwt.PUT("/participant/vaccinated", presenter.ParticipantPresentation.AcceptParticipant)
 
+	jwt.PUT("/participant", presenter.ParticipantPresentation.UpdateParticipantHandler)
+
+	jwt.DELETE("/participant/:id", presenter.ParticipantPresentation.DeleteParticipantHandler)
 	return e
 }

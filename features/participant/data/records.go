@@ -8,7 +8,12 @@ import (
 )
 
 type Participant struct {
-	gorm.Model
+	
+	ID        uint `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt gorm.DeletedAt `gorm:"index"`
+	
 	Nik         string
 	Fullname    string
 	Address     string
@@ -24,9 +29,14 @@ type Participant struct {
 }
 
 type Vac struct {
-	gorm.Model
+    ID        uint `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt gorm.DeletedAt `gorm:"index"`
+
 	Description string
 	Location    string
+	Address		string
 	Latitude    float64
 	Longitude   float64
 	VacType     string
@@ -35,7 +45,11 @@ type Vac struct {
 }
 
 type Session struct {
-	gorm.Model
+	
+    ID        uint `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt gorm.DeletedAt `gorm:"index"`
 	VacId       uint
 	Description string
 	StartTime   time.Time
@@ -43,7 +57,10 @@ type Session struct {
 }
 
 type User struct {
-	gorm.Model
+    ID        uint `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt gorm.DeletedAt `gorm:"index"`
 	Nik         string
 	Name        string
 	PhoneNumber string
@@ -57,14 +74,15 @@ func (v *Vac) toCore() participant.VacCore {
 	// }
 	return participant.VacCore{
 		ID:          int(v.ID),
-		Description: v.Description,
-		Location:    v.Location,
-		Latitude:    v.Latitude,
-		Longitude:   v.Longitude,
+		Description:	v.Description,
+		Location:   	v.Location,
+		Address: 		v.Address,
+		Latitude:   	v.Latitude,
+		Longitude:  	v.Longitude,
 		// Sessions:    convertedSession,
-		VacType: v.VacType,
-		Stock:   v.Stock,
-		AdminId: v.AdminId,
+		VacType: 		v.VacType,
+		Stock:   		v.Stock,
+		AdminId: 		v.AdminId,
 	}
 }
 

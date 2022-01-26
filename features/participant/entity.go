@@ -30,6 +30,7 @@ type VacCore struct {
 	ID          int
 	Description string
 	Location    string
+	Address		string
 	Latitude    float64
 	Longitude   float64
 	VacType     string
@@ -57,6 +58,8 @@ type Repository interface {
 	GetParticipantByNIK(nik string) (bool, error)
 	CountParticipantByVac(vacId int) (int, error)
 	CountParicipantByUserId(userId int) (int, error)
+	DeleteParticipant(ParticipantCore)error
+	UpdateParticipant(data ParticipantCore)error
 }
 
 type Service interface {
@@ -67,4 +70,6 @@ type Service interface {
 	GetParticipantMultiParam(int, int) (ParticipantCore, error)
 	RejectParticipant(int, int) error
 	AcceptParticipant(int, int) error
+	DeleteParticipant(ParticipantCore) error
+	UpdateParticipant(data ParticipantCore)error
 }
