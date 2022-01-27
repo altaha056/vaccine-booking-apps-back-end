@@ -2,7 +2,6 @@ package response
 
 import (
 	"net/http"
-	"time"
 	"vac/features/vac"
 
 	"github.com/labstack/echo"
@@ -29,8 +28,8 @@ type VacResponse struct {
 type SessionResponse struct {
 	ID          int
 	Description string
-	StartTime   time.Time
-	EndTime     time.Time
+	StartTime   string
+	EndTime     string
 }
 
 func NewSuccessResponse(e echo.Context, msg string, data interface{})error{

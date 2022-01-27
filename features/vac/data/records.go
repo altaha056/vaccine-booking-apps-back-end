@@ -33,8 +33,8 @@ type Session struct{
 
 	VacId		uint
 	Description	string
-	StartTime 	time.Time
-	EndTime		time.Time
+	StartTime 	string
+	EndTime		string
 }
 
 func toRecordSession(req vac.SessionCore)Session{

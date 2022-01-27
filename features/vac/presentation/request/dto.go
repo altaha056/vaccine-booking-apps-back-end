@@ -1,7 +1,7 @@
 package request
 
 import (
-	"time"
+	// "time"
 	"vac/features/vac"
 )
 
@@ -49,17 +49,17 @@ type VacFilter struct{
 }
 
 func (v *Vac) ToCore() vac.VacCore{
-	layoutTime := "2006-01-02T15:04"
+	// layoutTime := "2006-01-02T15:04"
 	convertedSession:=[]vac.SessionCore{}
 	for _,req:=range v.Sessions{
 
-		starttimeconv,_:=time.Parse(layoutTime, req.StartTime)
-		endtimeconv,_:=time.Parse(layoutTime, req.EndTime)
+		// starttimeconv,_:=time.Parse(layoutTime, req.StartTime)
+		// endtimeconv,_:=time.Parse(layoutTime, req.EndTime)
 		convertedSession = append(convertedSession, vac.SessionCore{
 			ID: req.ID,
 			Description: req.Description ,
-			StartTime: starttimeconv,
-			EndTime: endtimeconv,
+			StartTime: req.StartTime,
+			EndTime: req.EndTime,
 		})
 	}
 	return vac.VacCore{
@@ -87,14 +87,14 @@ func (vf *VacFilter) ToCore() vac.VacCore{
 }
 
 func (s *Session) ToCore() vac.SessionCore{
-	layoutTime := "2006-01-02T15:04"
-	starttimeconv,_:=time.Parse(layoutTime, s.StartTime)
-	endtimeconv,_:=time.Parse(layoutTime, s.EndTime)
+	// layoutTime := "2006-01-02T15:04"
+	// starttimeconv,_:=time.Parse(layoutTime, s.StartTime)
+	// endtimeconv,_:=time.Parse(layoutTime, s.EndTime)
 	return vac.SessionCore{
 		ID: s.ID,
 		Description: s.Description,
-		StartTime: starttimeconv,
-		EndTime: endtimeconv,
+		StartTime: s.StartTime,
+		EndTime: s.EndTime,
 	}
 }
 

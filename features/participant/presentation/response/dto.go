@@ -2,7 +2,7 @@ package response
 
 import (
 	"net/http"
-	"time"
+	// "time"
 	"vac/features/participant"
 
 	"github.com/labstack/echo/v4"
@@ -95,8 +95,8 @@ type VacDetailResponse struct {
 type SessionResponse struct {
 	ID          uint
 	Description string
-	StartTime   time.Time
-	EndTime     time.Time
+	StartTime   string
+	EndTime     string
 }
 
 type UserResponse struct {

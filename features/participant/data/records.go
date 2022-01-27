@@ -52,8 +52,8 @@ type Session struct {
     DeletedAt gorm.DeletedAt `gorm:"index"`
 	VacId       uint
 	Description string
-	StartTime   time.Time
-	EndTime     time.Time
+	StartTime   string
+	EndTime     string
 }
 
 type User struct {

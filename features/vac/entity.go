@@ -1,6 +1,5 @@
 package vac
 
-import "time"
 
 type VacCore struct {
 	ID       	int
@@ -19,8 +18,8 @@ type SessionCore struct{
 	ID			uint
 	VacId		uint
 	Description	string
-	StartTime 	time.Time
-	EndTime		time.Time
+	StartTime 	string
+	EndTime		string
 }
 
 type Service interface{
